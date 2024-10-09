@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 import path from "path";
 import connectDb from "./config/db.js";
 import cors from "cors";
-
+import userRoutes from "./routes/userRoutes.js";
 dotenv.config();
 
 connectDb();
@@ -23,5 +23,4 @@ const port = process.env.PORT || 3000;
 //ROUTES
 
 app.use("/api/v1/users", userRoutes);
-
 app.listen(port, () => console.log(`server is running on PORT:${port}`));
