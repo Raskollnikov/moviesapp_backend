@@ -7,6 +7,7 @@ import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import genreRoutes from "./routes/genreRoutes.js";
 import moviesRoutes from "./routes/moviesRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
 dotenv.config();
 
 connectDb();
@@ -27,5 +28,11 @@ const port = process.env.PORT || 3000;
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/genre", genreRoutes);
 app.use("/api/v1/movies", moviesRoutes);
+app.use("/api/v1/upload", uploadRoutes);
+
+const __dirname = path.resolve();
+
+app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
+console.log(path.join(__dirname, "uploads"));
 
 app.listen(port, () => console.log(`server is running on PORT:${port}`));
