@@ -6,7 +6,7 @@ import connectDb from "./config/db.js";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import genreRoutes from "./routes/genreRoutes.js";
-
+import moviesRoutes from "./routes/moviesRoutes.js";
 dotenv.config();
 
 connectDb();
@@ -26,4 +26,6 @@ const port = process.env.PORT || 3000;
 
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/genre", genreRoutes);
+app.use("/api/v1/movies", moviesRoutes);
+
 app.listen(port, () => console.log(`server is running on PORT:${port}`));
